@@ -33,35 +33,13 @@ npm install mcp-local-file-reader
 ```bash
 npx mcp-local-file-reader
 ```
-
-### 在代码中使用
-
-```javascript
-import { spawn } from 'child_process';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// 启动 MCP 服务器
-const mcpServer = spawn('node', [join(__dirname, 'node_modules/mcp-local-file-reader/build/index.js')], {
-  stdio: ['pipe', 'pipe', 'pipe']
-});
-
-// 与服务器通信
-mcpServer.stdout.on('data', (data) => {
-  console.log(`MCP 服务器输出: ${data}`);
-});
-
-mcpServer.stderr.on('data', (data) => {
-  console.error(`MCP 服务器错误: ${data}`);
-});
-```
+此时会启动一个 MCP node服务器，监听llm对话。
 
 ## 与 AI 工具集成
 
 ### 在 Windsurf 中使用
+
+在windsurf中，不需要手动启动mcp-local-file-reader，只需要配置即可，windsurf会自动启动mcp-local-file-reader（在windsurf的mcp_config.json中配置，点击refresh刷新服务器）。
 
 1. 在 Windsurf 的 mcp_config.json 配置文件中添加以下配置(FILE_TOOLS_API_KEY暂时还不需要)：
 
@@ -113,7 +91,7 @@ mcpServer.stderr.on('data', (data) => {
 
 ### 在其他 MCP 兼容的 AI 应用中使用
 
-按照特定应用的 MCP 集成指南，添加此服务器作为工具提供者。
+按照特定应用的 MCP 集成指南，添加此服务器作为工具提供者。cursor配置与windsurf中的配置类似，vscode的cline会稍微复杂一些。但是本质都是配置mcp.json，可以类似的配置。
 
 ## 开发
 
