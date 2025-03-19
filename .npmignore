@@ -1,0 +1,25 @@
+# 源代码
+src/
+
+# 开发工具配置
+.vscode/
+.idea/
+.editorconfig
+.eslintrc
+.prettierrc
+tsconfig.json
+
+# 测试文件
+test/
+*.test.ts
+*.spec.ts
+
+# 其他不需要发布的文件
+.git/
+.github/
+.gitignore
+node_modules/
+npm-debug.log
+yarn-error.log
+coverage/
+.nyc_output/

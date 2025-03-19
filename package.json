@@ -1,14 +1,17 @@
 {
   "name": "mcp-local-file-reader",
   "version": "0.1.0",
-  "description": "A Model Context Protocol server",
-  "private": true,
+  "description": "A Model Context Protocol server for reading local files",
   "type": "module",
   "bin": {
     "mcp-local-file-reader": "./build/index.js"
   },
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "files": [
-    "build"
+    "build",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
@@ -17,11 +20,32 @@
     "watch": "tsc --watch",
     "inspector": "npx @modelcontextprotocol/inspector build/index.js"
   },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "file",
+    "reader",
+    "ai",
+    "llm"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/mcp-local-file-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/mcp-local-file-reader/issues"
+  },
+  "homepage": "https://github.com/yourusername/mcp-local-file-reader#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "0.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
