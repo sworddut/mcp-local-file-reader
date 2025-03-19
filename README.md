@@ -63,32 +63,51 @@ mcpServer.stderr.on('data', (data) => {
 
 ### 在 Windsurf 中使用
 
-1. 在 Windsurf 的 MCP 配置文件中添加以下配置：
+1. 在 Windsurf 的 mcp_config.json 配置文件中添加以下配置(FILE_TOOLS_API_KEY暂时还不需要)：
+
+#### 本地化部署
 
 ```json
 {
-  "servers": [
-    {
-      "name": "file-tools",
-      "command": "npx mcp-local-file-reader",
-      "tools": [
-        {
-          "name": "read_file",
-          "description": "读取指定文件内容"
-        },
-        {
-          "name": "list_files",
-          "description": "列出指定目录中的所有文件"
-        },
-        {
-          "name": "get_file_info",
-          "description": "获取指定文件的详细信息"
-        }
-      ]
+  "servers": {
+    "file-tools": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "node",
+        "path/to/mcp-local-file-reader/build/index.js"
+      ],
+      "env": {
+        "FILE_TOOLS_API_KEY": ""
+      }
     }
-  ]
+  }
 }
 ```
+
+#### 使用npm的形式部署
+
+```json
+{
+  "servers": {
+    "file-tools": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "mcp-local-file-reader"
+      ],
+      "env": {
+        "FILE_TOOLS_API_KEY": ""
+      }
+    }
+  }
+}
+```
+
+
+点击windsurf对话框的小锤子图标，点击refrsh刷新服务器
+官方配置说明：https://docs.codeium.com/windsurf/mcp
 
 2. 重启 Windsurf 以加载新的 MCP 配置
 
